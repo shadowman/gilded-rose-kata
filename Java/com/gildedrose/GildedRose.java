@@ -17,20 +17,18 @@ class GildedRose {
 	private void update(Item item) {
 		if (!isBrie(item)
 		        && !isTickets(item)) {
-		    if (item.quality > 0) {
-		        if (!isSulfuras(item)) {
-		            decreaseQuality(item);
-		        }
+	        if (!isSulfuras(item)) {
+	        	decreaseQualityBounded(item);
 		    }
 		} else {
-		    extracted(item);
+		    increaseQualityBounded(item);
 		    if (isTickets(item)) {
 	            if (item.sellIn < 11) {
-	                extracted(item);
+	                increaseQualityBounded(item);
 	            }
 
 	            if (item.sellIn < 6) {
-	                extracted(item);
+	                increaseQualityBounded(item);
 	            }
 	        }
 		}
@@ -42,21 +40,25 @@ class GildedRose {
 		if (isExpired(item)) {
 		    if (!isBrie(item)) {
 		        if (!isTickets(item)) {
-		            if (item.quality > 0) {
-		                if (!isSulfuras(item)) {
-		                    decreaseQuality(item);
-		                }
+		        	if (!isSulfuras(item)) {
+		                decreaseQualityBounded(item);
 		            }
 		        } else {
 		            item.quality = item.quality - item.quality;
 		        }
 		    } else {
-		        extracted(item);
+		        increaseQualityBounded(item);
 		    }
 		}
 	}
 
-	private void extracted(Item item) {
+	private void decreaseQualityBounded(Item item) {
+		if (item.quality > 0) {
+		    decreaseQuality(item);
+		}
+	}
+
+	private void increaseQualityBounded(Item item) {
 		if (item.quality < 50) {
 		    increaseQuality(item);   
 		}
