@@ -44,12 +44,16 @@ class GildedRose {
 		                decreaseQualityBounded(item);
 		            }
 		        } else {
-		            item.quality = item.quality - item.quality;
+		            loseAllQuality(item);
 		        }
 		    } else {
 		        increaseQualityBounded(item);
 		    }
 		}
+	}
+
+	private void loseAllQuality(Item item) {
+		item.quality = item.quality - item.quality;
 	}
 
 	private void decreaseQualityBounded(Item item) {
