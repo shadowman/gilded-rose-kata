@@ -53,5 +53,14 @@ public class GildedRoseTest {
         app.updateQuality();
         assertEquals(3, app.items[0].quality);
 	}
+    
+    @Test
+    public void IfItemIsBrieAndExpiredAndMaxedInQualityThenQualityDoesNotIncrease() throws Exception {
+    	Item[] items = new Item[] { new Item("Aged Brie", 0, 50) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(50, app.items[0].quality);
+	}
+    
 
 }
