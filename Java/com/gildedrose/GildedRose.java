@@ -15,11 +15,11 @@ class GildedRose {
     }
 
 	private void update(Item item) {
-		if (!isSulfuras(item)) {
-		    decreaseSellInDate(item);
-		}
+		age(item);
+		updateQuality(item);
+	}
 
-		
+	private void updateQuality(Item item) {
 		if (isBrie(item) || isTickets(item)) {
 		    increaseQualityBounded(item);
 		} else {
@@ -51,6 +51,12 @@ class GildedRose {
 		    } else {
 		        increaseQualityBounded(item);
 		    }
+		}
+	}
+
+	private void age(Item item) {
+		if (!isSulfuras(item)) {
+		    decreaseSellInDate(item);
 		}
 	}
 
