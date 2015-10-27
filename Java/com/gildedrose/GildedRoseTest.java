@@ -13,5 +13,13 @@ public class GildedRoseTest {
         app.updateQuality();
         assertTrue(app.items[0].sellIn < 1);
     }
+    
+    @Test
+	public void IfItemIsSulfurasSellInDoesNotDecrease() throws Exception {
+    	Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", 1, 80) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(1, app.items[0].sellIn);
+	}
 
 }
