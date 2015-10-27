@@ -17,21 +17,22 @@ class GildedRose {
 	private void update(Item item) {
 		if (isBrie(item) || isTickets(item)) {
 		    increaseQualityBounded(item);
-		    if (isTickets(item)) {
-	            if (item.sellIn < 11) {
-	                increaseQualityBounded(item);
-	            }
-
-	            if (item.sellIn < 6) {
-	                increaseQualityBounded(item);
-	            }
-	        }
 		} else {
-		      if (!isSulfuras(item)) {
+		   if (!isSulfuras(item)) {
 				decreaseQualityBounded(item);
 		   }
 		}
+		
+		if (isTickets(item)) {
+            if (item.sellIn < 11) {
+                increaseQualityBounded(item);
+            }
 
+            if (item.sellIn < 6) {
+                increaseQualityBounded(item);
+            }
+        }
+		
 		if (!isSulfuras(item)) {
 		    decreaseSellInDate(item);
 		}
