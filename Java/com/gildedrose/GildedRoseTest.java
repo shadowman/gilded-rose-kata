@@ -101,5 +101,13 @@ public class GildedRoseTest {
         app.updateQuality();
         assertEquals(3, app.items[0].quality);
 	}
+    
+    @Test
+	public void IfItemIsSulfurasExpiredQualityDoesNotDecrease() throws Exception {
+    	Item[] items = new Item[] { new Item("Sulfuras, Hand of Ragnaros", -1, 80) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(80, app.items[0].quality);
+	}
 
 }
