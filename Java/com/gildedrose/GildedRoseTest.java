@@ -94,5 +94,12 @@ public class GildedRoseTest {
         assertEquals(0, app.items[0].quality);
 	}
     
+    @Test
+	public void IfItemIsNormalAndExpiredQualityShouldDecreaseByTwo() throws Exception {
+    	Item[] items = new Item[] { new Item("Normal", 0, 5) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(3, app.items[0].quality);
+	}
 
 }
