@@ -40,16 +40,16 @@ class GildedRose {
 		
 		
 		if (isExpired(item)) {
-		    if (!isBrie(item)) {
-		        if (!isTickets(item)) {
+		    if (isBrie(item)) {
+		        increaseQualityBounded(item);
+		    } else {
+		        if (isTickets(item)) {
+		            loseAllQuality(item);
+		        } else {
 		        	if (!isSulfuras(item)) {
 		                decreaseQualityBounded(item);
 		            }
-		        } else {
-		            loseAllQuality(item);
 		        }
-		    } else {
-		        increaseQualityBounded(item);
 		    }
 		}
 	}
