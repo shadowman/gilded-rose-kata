@@ -62,5 +62,13 @@ public class GildedRoseTest {
         assertEquals(50, app.items[0].quality);
 	}
     
+    @Test
+	public void IfItemIsConcertTicketWithMoreThan10DaysThenQualityIncreasesByOne() throws Exception {
+    	Item[] items = new Item[] { new Item("Backstage passes to a TAFKAL80ETC concert", 11, 1) };
+        GildedRose app = new GildedRose(items);
+        app.updateQuality();
+        assertEquals(2, app.items[0].quality);
+	}
+    
 
 }
